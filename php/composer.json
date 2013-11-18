@@ -1,0 +1,6 @@
+{
+  "require": {
+    "slim/slim": "2.*",
+    "hybridauth/hybridauth": "dev-master"
+  }
+}
