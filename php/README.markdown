@@ -48,7 +48,7 @@ If you want to connect to the virtual machine to view the log-files,
 or change some configurations, you can use `vagrant ssh` to establish
 a SSH connection.
 
-Use `vagrant halt` to stop the virtual machin.
+Use `vagrant halt` to stop the virtual machine.
 
 ### Manual setup
 
