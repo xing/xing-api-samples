@@ -1,10 +1,16 @@
 <?php
 
 // Hybrid-Auth Config file: http://hybridauth.sourceforge.net/userguide/Configuration.html
+function getSiteBaseUrl()
+{
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $domainName = $_SERVER['HTTP_HOST'] ;
+    return $protocol . $domainName;
+}
 
 $config =
   array(
-    "base_url" => "http://localhost:8080/endpoint",
+    "base_url" => getSiteBaseUrl() . '/endpoint',
     "providers" => array(
       "XING" => array(
         "enabled" => true,
