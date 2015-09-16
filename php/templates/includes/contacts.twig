@@ -1,0 +1,27 @@
+<h2>Your Contacts</h2>
+<table id='contacts' class="table table-striped">
+    <thead>
+    <tr>
+        <th>Picture</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for contact in contacts %}
+        <tr>
+            <td class="col-md-1">
+                <a target="_blank" href="{{ contact.profileURL }}">
+                    <img src="{{ contact.photoURL }}" class="img-rounded">
+                </a>
+            </td>
+            <td class="col-md-5">
+                <strong>{{ contact.displayName }}</strong>
+            </td>
+            <td class="col-md-5">
+                {{ contact.email }}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
