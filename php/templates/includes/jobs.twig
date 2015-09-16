@@ -1,0 +1,83 @@
+{% set paginatorVisibleLinks = 10 %}
+{% set totalPages = jobs.totalCount //  paginatorVisibleLinks + 1 %}
+
+<div id="search-jobs">
+    <div class="col-md-6">
+        <form action="/searchjobs/" method="get">
+            <label for="jobs-query">Query</label>
+            <input type="text" id="jobs-query" name="jobs-query" value="{{ jobs.query }}" maxlength="30" />
+            <input class="btn btn-primary" type="submit" value="Search Jobs" id="jobs-query" />
+        </form>
+    </div>
+    <div class="col-md-6 text-right">
+        {% if jobs.totalCount > jobs.items.count %}
+            {# show jobs search  #}
+            <div class="row">
+                <div>Found {{ jobs.totalCount }} Jobs</div>
+            </div>
+
+            <div class="row">
+                <div>Page {{ jobs.currentPaginatorPage }} of {{ totalPages }}</div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% if jobs %}
+    <table id='search-jobs-result' class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company name</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for job_id,job in jobs.items %}
+            <tr>
+                <td class="col-md-5">
+                    {% if job.links.xing %}
+                        <a target="_blank" href="{{ job.links.xing }}">{{ job.title }}</a>
+                    {% else %}
+                        {{ job.title }}
+                    {% endif %}
+                </td>
+                <td class="col-md-5">
+                    {{ job.company.name }}
+                </td>
+                <td class="col-md-2">
+                    {{ job.location.city }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if jobs.totalCount > jobs.items.count %}
+        {# show paginator when required #}
+        <ul class="pagination pagination-sm">
+            {% set minPaginatorRange = 1 %}
+            {% set maxPaginatorRange = totalPages %}
+            {% if paginatorVisibleLinks < totalPages %}
+                {% set minPaginatorRange = max(1, jobs.currentPaginatorPage - paginatorVisibleLinks // 2  ) %}
+                {% set maxPaginatorRange = min ( totalPages, minPaginatorRange +  paginatorVisibleLinks -1) %}
+            {% endif %}
+            {% if minPaginatorRange > 1 %}
+                <li><a href="/searchjobs/{{ jobs.query }}/{{ max ( 1, minPaginatorRange - paginatorVisibleLinks//2 ) }}">&laquo;</a></li>
+            {% endif %}
+
+            {% for i in minPaginatorRange..maxPaginatorRange %}
+                <li {{ i == jobs.currentPaginatorPage ? 'class="active disabled" ' : '' }}>
+                    <a href="/searchjobs/{{ jobs.query }}/{{ i }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {% if maxPaginatorRange < totalPages %}
+                <li>
+                    <a href="/searchjobs/{{ jobs.query }}/{{ min ( totalPages, maxPaginatorRange + paginatorVisibleLinks//2 +1) }}">&raquo;</a>
+                </li>
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endif %}
+

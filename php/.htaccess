@@ -1,3 +1,15 @@
+#RewriteBase /
 RewriteEngine On
+
+# for jobs searches
+RewriteCond %{QUERY_STRING}  ^jobs-query=(.*)$  [NC]
+RewriteRule ^searchjobs /searchjobs/%1?     [NC,L,R=302]
+
+# for emails searches
+RewriteCond %{QUERY_STRING}  ^emails-query=(.*)$  [NC]
+RewriteRule ^searchemails /searchemails/%1?     [NC,L,R=302]
+
+# redirect all request to the index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]
+

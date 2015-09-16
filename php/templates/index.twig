@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="/public/js/init.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XING API sample</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="starter-template">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Hello {{ profile.displayName }}</h1>
+                <img src="{{ profile.photoURL }}" class="img-rounded">
+                <p>Your consumer key is
+                    <mark>{{ consumerKey }}</mark>
+                    (edit <code>app/config.php</code> to change)
+                </p>
+                {% if isLoggedIn %}
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                {% else %}
+                    <a href="/login" class="btn btn-primary">Login</a>
+                {% endif %}
+            </div>
+        </div>
+        {% if isLoggedIn %}
+            <div class="row">
+                {% include 'includes/accordion.twig' %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+</body>
+
+</html>
