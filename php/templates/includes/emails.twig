@@ -1,47 +1,49 @@
-<div id="search-emails" class="row">
-    <div class="col-md-6">
-        <form action="/searchemails/" method="get">
-            <label for="emails-query">Query [separate with comma]</label>
-            <input size="100" type="text" id="emails-query" name="emails-query" value="{{ emails.query }}" maxlength="200" />
-            <input class="btn btn-primary" type="submit" value="Search Email" id="emails-query" />
-        </form>
-    </div>
-    {% if emails %}
-        <div class="col-md-6 text-right">
-            <div class="row">
-                <div>Found {{ emails.users|length }} contacts</div>
-            </div>
+<div id="search-emails">
+    <div id="search-emails-header" class="row">
+        <div class="col-md-6">
+            <form action="/searchemails/" method="get">
+                <label for="emails-query">Query [separate with comma]</label>
+                <input size="100" type="text" id="emails-query" name="emails-query" value="{{ emails.query }}" maxlength="200" />
+                <input class="btn btn-primary" type="submit" value="Search Email" id="emails-query" />
+            </form>
         </div>
-    {% endif %}
-</div>
+        {% if emails %}
+            <div class="col-md-6 text-right">
+                <div class="row">
+                    <div>Found {{ emails.users|length }} contacts</div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
 
-<div class="row">
-    {% if emails %}
-        <table id='contacts' class="table table-striped">
-            <thead>
-            <tr>
-                <th>Email</th>
-                <th>Picture</th>
-                <th>Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for email,user in emails.users %}
+    <div id="search-emails-results" class="row">
+        {% if emails %}
+            <table id='contacts' class="table table-striped">
+                <thead>
                 <tr>
-                    <td class="col-md-3">
-                        {{ email }}
-                    </td>
-                    <td class="col-md-1">
-                        <a target="_blank" href="{{ user.profileURL }}">
-                            <img src="{{ user.photoURL }}" class="img-rounded">
-                        </a>
-                    </td>
-                    <td class="col-md-8">
-                        <strong>{{ user.displayName }}</strong>
-                    </td>
+                    <th>Email</th>
+                    <th>Picture</th>
+                    <th>Name</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+                </thead>
+                <tbody>
+                {% for email,user in emails.users %}
+                    <tr>
+                        <td class="col-md-3">
+                            {{ email }}
+                        </td>
+                        <td class="col-md-1">
+                            <a target="_blank" href="{{ user.profileURL }}">
+                                <img src="{{ user.photoURL }}" class="img-rounded">
+                            </a>
+                        </td>
+                        <td class="col-md-8">
+                            <strong>{{ user.displayName }}</strong>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
 </div>

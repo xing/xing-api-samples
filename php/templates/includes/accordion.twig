@@ -1,43 +1,42 @@
-<div class="bs-example">
-    <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel-contacts">Your
-                        contacts<i class="indicator glyphicon glyphicon-chevron-{{ currentPage == 'home' ? 'down':'up' }} pull-right"></i></a>
-                </h4>
-            </div>
-            <div id="panel-contacts" class="panel-collapse collapse {{ currentPage == 'home' ? 'in' }}">
-                <div class="panel-body">
-                    <p>{% include '/includes/contacts.twig' %}</p>
-                </div>
+<div class="panel-group row" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel-contacts">Your
+                    contacts<i class="indicator glyphicon glyphicon-chevron-{{ currentPage == 'home' ? 'down':'up' }} pull-right"></i></a>
+            </h4>
+        </div>
+        <div id="panel-contacts" class="panel-collapse collapse {{ currentPage == 'home' ? 'in' }}">
+            <div class="panel-body">
+                <p>{% include '/includes/contacts.twig' %}</p>
             </div>
         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel-jobs">Jobs
-                        search<i class="indicator glyphicon glyphicon-chevron-{{ currentPage == 'jobs' ? 'down':'up' }} pull-right"></i></a>
-                </h4>
-            </div>
-            <div id="panel-jobs" class="panel-collapse collapse {{ currentPage == 'jobs' ? 'in' }}">
-                <div class="panel-body">
-                    <p>{% include '/includes/jobs.twig' %}</p>
-                </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel-jobs">Jobs
+                    search<i class="indicator glyphicon glyphicon-chevron-{{ currentPage == 'jobs' ? 'down':'up' }} pull-right"></i></a>
+            </h4>
+        </div>
+        <div id="panel-jobs" class="panel-collapse collapse {{ currentPage == 'jobs' ? 'in' }}">
+            <div class="panel-body">
+                <p>{% include '/includes/jobs.twig' %}</p>
             </div>
         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel-emails">Find contacts by
-                        email<i class="indicator glyphicon glyphicon-chevron-{{ currentPage == 'emails' ? 'down':'up' }} pull-right"></i></a>
-                </h4>
-            </div>
-            <div id="panel-emails" class="panel-collapse collapse {{ currentPage == 'emails' ? 'in' }}">
-                <div class="panel-body">
-                    <p>{% include '/includes/emails.twig' %}</p>
-                </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel-emails">Find contacts by
+                    email<i class="indicator glyphicon glyphicon-chevron-{{ currentPage == 'emails' ? 'down':'up' }} pull-right"></i></a>
+            </h4>
+        </div>
+        <div id="panel-emails" class="panel-collapse collapse {{ currentPage == 'emails' ? 'in' }}">
+            <div class="panel-body">
+                <p>{% include '/includes/emails.twig' %}</p>
             </div>
         </div>
     </div>
 </div>
+
