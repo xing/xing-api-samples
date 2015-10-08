@@ -9,7 +9,7 @@ The application is contained in the [index.php](index.php) file.
 It's using Slim to configure some routes: `/`, `/login`, `/endpoint` and `/logout`.
 Have a look at the source code for further details.
 
-The configuration for HybridAuth is done in the [config.php](config.php) file.
+The configuration for HybridAuth is done in the [config.php](app/config.php) file.
 You have to paste your consumer key and secret, which you'll get
 from the [XING Developer site](https://dev.xing.com/applications),
 in that file.
