@@ -41,10 +41,9 @@ public class XingExample {
 
         // Initializing OAuth - Service
         OAuthService service = new ServiceBuilder()
-                .provider(XingApi.class)
                 .apiKey(apiKey)
                 .apiSecret(apiSecret)
-                .build();
+                .build(XingApi.instance());
 
         // Obtain the Request Token
         System.out.println("Fetching the Request Token...");
